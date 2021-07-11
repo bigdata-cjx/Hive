@@ -35,3 +35,17 @@ SELECT * FROM order;
 ```
 bin/hive -e "select * from db_hive.order;"  >  /opt/datas/kfk/order.txt
 ```
+# 数据备份
+## export(导出到HDFS)
+```
+EXPORT TABLE db_hive.order 
+TO '/user/kfk/datas/export/order'
+```
+## import：
+```
+import table order_imp from '/user/kfk/datas/export/order';
+
+IMPORT  TABLE order_imp_1 
+FROM '/user/kfk/datas/export/order'
+LOCATION '/user/kfk/datas/imp/order';    --（location）指定数据表目录
+```
