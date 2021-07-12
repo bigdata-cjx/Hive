@@ -49,3 +49,63 @@ IMPORT  TABLE order_imp_1
 FROM '/user/kfk/datas/export/order'
 LOCATION '/user/kfk/datas/imp/order';    --（location）指定数据表目录
 ```
+# 常用的查询
+1. 字段查询: select userid,username from order;
+2.where查询: select * from order where price > 200;
+3.limit查询: select * from order limit 2;
+4.distinct: select distinct city from order;
+5.max/min/count/sum: select max(price) from order;
+6.group by / having: select sum(price) price,city from order group by city having price > 500;
+## join
+### 等值连接
+```
+SELECT * 
+FROM customer t1, order t2
+WHERE t1.userid = t2.userid ;
+```
+### 左连接
+```
+select  t1.username,t2.product_name  from customer t1 left join order t2 on t1.userid = t2.userid;
+select  t2.username,t1.product_name  from order t1 left join customer t2 on t1.userid = t2.userid;
+```
+### 右连接
+```
+select  t1.username,t2.product_name  from customer t1 right join order t2 on t1.userid = t2.userid;
+select  t2.username,t1.product_name  from order t1 right join customer t2 on t1.userid = t2.userid;
+```
+### 全连接
+```
+select  t2.username,t1.product_name  from order t1 full join customer t2 on t1.userid = t2.userid;
+```
+# 几种 by 的使用
+set mapreduce.job.reduces=3
+## order by
+只有一个reduce ，全局排序。设置的reduce数量无效。
+```
+select * from order order by price desc
+select * from order order by price asc
+```
+## sort by
+对每一个reduce内部的数据进行排序，最后的全局结果集不排序。最终生成的文件数量等于设置的reduce数量。
+```
+insert overwrite local directory '/opt/datas/kfk/sort'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+select * from order sort by price desc;
+```
+## distribute by 
+作用类似于partition,一般与 sort by 一起使用。最终生成的文件数量等于设置的reduce数量。
+```
+insert overwrite local directory '/opt/datas/kfk/sort'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+select * from order distribute by username sort by price desc;
+```
+## cluster by 
+distribute by 和 sort by字段相同时，使用cluster by 代替
+```
+insert overwrite local directory '/opt/datas/kfk/sort'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+select * from order cluster by username;
+```
