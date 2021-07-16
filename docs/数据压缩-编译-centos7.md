@@ -1,4 +1,8 @@
-参考：https://blog.csdn.net/guluxiaogong/article/details/51754522
+# 参考
+```
+https://blog.csdn.net/guluxiaogong/article/details/51754522
+https://blog.csdn.net/yz972641975/article/details/98405720
+```
 # 添加必须文件
 ```
 ➜  modules scp apache-maven-3.3.9-bin.tar.gz root@bigdata-pro02:/opt/modules/
@@ -59,7 +63,6 @@ OS name: "linux", version: "5.4.0-77-generic", arch: "amd64", family: "unix"
 [root@bigdata-pro02 protobuf-2.5.0]# yum install autoconf automake libtool make cmake g++ unzip glibc-headers gcc gcc-c++ openssl-devel ncurses-devel
 [root@bigdata-pro02 protobuf-2.5.0]# ./configure
 [root@bigdata-pro02 protobuf-2.5.0]# make
-[root@bigdata-pro02 protobuf-2.5.0]# make check
 [root@bigdata-pro02 protobuf-2.5.0]# make install
 ```
 ## Snappy
@@ -153,6 +156,20 @@ mvn package -DskipTests -Pdist,native –Dtar
 [INFO] Finished at: 2021-07-16T17:41:57+08:00
 [INFO] Final Memory: 216M/2108M
 [INFO] ------------------------------------------------------------------------
+
+编译成功后会打包，放在hadoop-dist/target
+[root@bigdata-pro02 hadoop-2.6.0-src]# ll hadoop-dist/target/
+总用量 529636
+drwxr-xr-x 2 root root        28 7月  16 17:41 antrun
+-rw-r--r-- 1 root root      1869 7月  16 17:41 dist-layout-stitching.sh
+-rw-r--r-- 1 root root       642 7月  16 17:41 dist-tar-stitching.sh
+drwxr-xr-x 9 root root       149 7月  16 17:41 hadoop-2.6.0
+-rw-r--r-- 1 root root 180415644 7月  16 17:41 hadoop-2.6.0.tar.gz
+-rw-r--r-- 1 root root      2778 7月  16 17:41 hadoop-dist-2.6.0.jar
+-rw-r--r-- 1 root root 361917680 7月  16 17:41 hadoop-dist-2.6.0-javadoc.jar
+drwxr-xr-x 2 root root        51 7月  16 17:41 javadoc-bundle-options
+drwxr-xr-x 2 root root        28 7月  16 17:41 maven-archiver
+drwxr-xr-x 2 root root         6 7月  16 17:41 test-dir
 
 build失败注意删除下载库，重新下载
 ```
