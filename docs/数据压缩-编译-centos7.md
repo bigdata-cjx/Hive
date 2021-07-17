@@ -172,4 +172,47 @@ drwxr-xr-x 2 root root        28 7月  16 17:41 maven-archiver
 drwxr-xr-x 2 root root         6 7月  16 17:41 test-dir
 
 build失败注意删除下载库，重新下载
+
+snappy相关的结果文件在 /usr/local/lib 下
+[root@bigdata-pro02 ~]# cd /usr/local/lib
+[root@bigdata-pro02 lib]# ll
+总用量 71916
+-rw-r--r-- 1 root root 21046902 7月  16 17:26 libprotobuf.a
+-rwxr-xr-x 1 root root      968 7月  16 17:26 libprotobuf.la
+-rw-r--r-- 1 root root  2025172 7月  16 17:26 libprotobuf-lite.a
+-rwxr-xr-x 1 root root     1003 7月  16 17:26 libprotobuf-lite.la
+lrwxrwxrwx 1 root root       25 7月  16 17:26 libprotobuf-lite.so -> libprotobuf-lite.so.8.0.0
+lrwxrwxrwx 1 root root       25 7月  16 17:26 libprotobuf-lite.so.8 -> libprotobuf-lite.so.8.0.0
+-rwxr-xr-x 1 root root   965136 7月  16 17:26 libprotobuf-lite.so.8.0.0
+lrwxrwxrwx 1 root root       20 7月  16 17:26 libprotobuf.so -> libprotobuf.so.8.0.0
+lrwxrwxrwx 1 root root       20 7月  16 17:26 libprotobuf.so.8 -> libprotobuf.so.8.0.0
+-rwxr-xr-x 1 root root  8675696 7月  16 17:26 libprotobuf.so.8.0.0
+-rw-r--r-- 1 root root 29820168 7月  16 17:26 libprotoc.a
+-rwxr-xr-x 1 root root      984 7月  16 17:26 libprotoc.la
+lrwxrwxrwx 1 root root       18 7月  16 17:26 libprotoc.so -> libprotoc.so.8.0.0
+lrwxrwxrwx 1 root root       18 7月  16 17:26 libprotoc.so.8 -> libprotoc.so.8.0.0
+-rwxr-xr-x 1 root root 10291736 7月  16 17:26 libprotoc.so.8.0.0
+-rw-r--r-- 1 root root   522272 7月  16 15:13 libsnappy.a
+-rwxr-xr-x 1 root root      955 7月  16 15:13 libsnappy.la
+lrwxrwxrwx 1 root root       18 7月  16 15:13 libsnappy.so -> libsnappy.so.1.3.0
+lrwxrwxrwx 1 root root       18 7月  16 15:13 libsnappy.so.1 -> libsnappy.so.1.3.0
+-rwxr-xr-x 1 root root   258632 7月  16 15:13 libsnappy.so.1.3.0
+drwxr-xr-x 2 root root       49 7月  16 17:26 pkgconfig
+
+最终 native 下需要的包在 hadoop-2.6.0-src/hadoop-dist/target/hadoop-2.6.0/lib/native 下
+[root@bigdata-pro02 native]# ll
+总用量 5540
+-rw-r--r-- 1 root root 1325284 7月  16 17:41 libhadoop.a
+-rw-r--r-- 1 root root 1607128 7月  16 17:41 libhadooppipes.a
+lrwxrwxrwx 1 root root      18 7月  16 17:41 libhadoop.so -> libhadoop.so.1.0.0
+-rwxr-xr-x 1 root root  768352 7月  16 17:41 libhadoop.so.1.0.0
+-rw-r--r-- 1 root root  474962 7月  16 17:41 libhadooputils.a
+-rw-r--r-- 1 root root  426938 7月  16 17:41 libhdfs.a
+lrwxrwxrwx 1 root root      16 7月  16 17:41 libhdfs.so -> libhdfs.so.0.0.0
+-rwxr-xr-x 1 root root  268400 7月  16 17:41 libhdfs.so.0.0.0
+-rw-r--r-- 1 root root  522272 7月  16 17:41 libsnappy.a
+-rwxr-xr-x 1 root root     955 7月  16 17:41 libsnappy.la
+lrwxrwxrwx 1 root root      18 7月  16 17:41 libsnappy.so -> libsnappy.so.1.3.0
+lrwxrwxrwx 1 root root      18 7月  16 17:41 libsnappy.so.1 -> libsnappy.so.1.3.0
+-rwxr-xr-x 1 root root  258632 7月  16 17:41 libsnappy.so.1.3.0
 ```
