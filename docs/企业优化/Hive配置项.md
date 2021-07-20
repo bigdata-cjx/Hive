@@ -1,5 +1,4 @@
-# Hive配置项
-## hive.fetch.task.conversion
+# hive.fetch.task.conversion
 ```
 <property>
     <name>hive.fetch.task.conversion</name>
@@ -15,20 +14,20 @@
     </description>
 </property>
 ```
-### none
+## none
 所有的语句都走MR
 ```
 hive (default)> set hive.fetch.task.conversion = none;
 // 走MR
 hive (default)> select * from test;
 ```
-### minimal
+## minimal
 ```
 hive (default)> set hive.fetch.task.conversion = minimal;
 // 不走MR
 hive (default)> select * from test;
 ```
-### more
+## more
 ```
 hive (default)> set hive.fetch.task.conversion = more;
 // 不走MR
