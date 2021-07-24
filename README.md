@@ -1,7 +1,6 @@
 # Hive
-# 版本
-hive-2.3.4-bin/
-# 启动
+版本: hive-2.3.4-bin/
+# Docker 启动
 ## Hadoop
 ```
 service ssh start
