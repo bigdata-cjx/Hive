@@ -25,7 +25,7 @@ hive (default)> list jar;
 ```  
 ## 创建函数
 ```
-hive (default)> create temporary function cjx_udf  as 'udf.CjxUDF';
+hive (default)> create temporary function cjx_udf  as 'hiveudf.CjxUDF';
 hive (default)> show functions;
 ```
 ## 使用自定义函数

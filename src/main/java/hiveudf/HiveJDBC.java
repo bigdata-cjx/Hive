@@ -1,4 +1,4 @@
-package udf;
+package hiveudf;
 
 import java.sql.*;
 
